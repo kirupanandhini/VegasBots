@@ -16,7 +16,7 @@ public class YourService extends KiboRpcService {
     @Override
     protected void runPlan1(){
         // the mission starts
-        api.startMission();
+        boolean result = api.startMission();
 
         // move to a point
         Point point = new Point(10.71000f, -7.70000f, 4.48000f);
@@ -45,6 +45,7 @@ public class YourService extends KiboRpcService {
         // send mission completion
         api.reportMissionCompletion();
     }
+    //hello
 
     @Override
     protected void runPlan2(){
