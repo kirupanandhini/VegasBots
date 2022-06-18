@@ -23,7 +23,7 @@ public class YourService extends KiboRpcService {
 
         Log.i(TAG, "start mission");
         // the mission starts
-        api.startMission();
+        boolean result = api.startMission();
 
         // move to a point
         Point point = new Point(10.71000f, -7.70000f, 4.48000f);
@@ -43,6 +43,14 @@ public class YourService extends KiboRpcService {
 
         // report point1 arrival
         api.reportPoint1Arrival();
+
+        //move to point 2 
+        Point point2 = new Point(11.27460f, -9.92284f, 5.29881f);
+        Quaternion quaternion2 = new Quaternion(0f, 0f, -0.707f, 0.707f); 
+        api.moveTo(point, quaternion, false); 
+
+        //report point2 arrival 
+        api.reportPoint2Arrival();
 
         // get a camera image
         Mat image = api.getMatNavCam();
@@ -66,6 +74,7 @@ public class YourService extends KiboRpcService {
         // send mission completion
         api.reportMissionCompletion();
     }
+    //hello
 
     @Override
     protected void runPlan2(){
