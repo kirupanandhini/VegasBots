@@ -29,7 +29,11 @@ public class YourService extends KiboRpcService {
         //move to point 2 
         Point point2 = new Point(11.27460f, -9.92284f, 5.29881f);
         Quaternion quaternion2 = new Quaternion(0f, 0f, -0.707f, 0.707f); 
+<<<<<<< HEAD
+        api.moveTo(point2, quaternion2, false); 
+=======
         api.moveTo(point, quaternion, false); 
+>>>>>>> 54bb8b0a9491906875df8214333256cf56162d43
 
         //report point2 arrival 
         api.reportPoint2Arrival();
