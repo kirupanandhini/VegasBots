@@ -26,6 +26,14 @@ public class YourService extends KiboRpcService {
         // report point1 arrival
         api.reportPoint1Arrival();
 
+        //move to point 2 
+        Point point2 = new Point(11.27460f, -9.92284f, 5.29881f);
+        Quaternion quaternion2 = new Quaternion(0f, 0f, -0.707f, 0.707f); 
+        api.moveTo(point, quaternion, false); 
+
+        //report point2 arrival 
+        api.reportPoint2Arrival();
+
         // get a camera image
         Mat image = api.getMatNavCam();
 
