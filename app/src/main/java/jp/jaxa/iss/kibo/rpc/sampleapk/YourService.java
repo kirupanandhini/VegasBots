@@ -11,7 +11,7 @@ import gov.nasa.arc.astrobee.types.Quaternion;
 import org.opencv.core.Mat;
 
 /**
- * Class meant to handle commands from the Ground Data System and execute them in Astrobee
+ * Class meant to handle commands from the Ground Data System and execute them in Astrobee.
  */
 
 public class YourService extends KiboRpcService {
@@ -20,7 +20,6 @@ public class YourService extends KiboRpcService {
 
     @Override
     protected void runPlan1(){
-
         Log.i(TAG, "start mission");
         // the mission starts
         boolean result = api.startMission();
@@ -28,26 +27,23 @@ public class YourService extends KiboRpcService {
         // move to a point
         Point point = new Point(10.71000f, -7.70000f, 4.48000f);
         Quaternion quaternion = new Quaternion(0f, 0.707f, 0f, 0.707f);
-        Result result;
-        result = api.moveTo(point, quaternion, false);
-
+        Result r = api.moveTo(point, quaternion, false);
 
         final int LOOP_MAX = 5;
         // check result and loop while moveTo api is not succeeded
         int loopCounter = 0;
-        while (!result.hasSucceeded() && loopCounter < LOOP_MAX) {
+        while (!r.hasSucceeded() && loopCounter < LOOP_MAX) {
             // retry
-            result = api.moveTo(point, quaternion, true);
+            r = api.moveTo(point, quaternion, true);
             ++loopCounter;
         }
-
         // report point1 arrival
         api.reportPoint1Arrival();
 
         //move to point 2 
         Point point2 = new Point(11.27460f, -9.92284f, 5.29881f);
         Quaternion quaternion2 = new Quaternion(0f, 0f, -0.707f, 0.707f); 
-        api.moveTo(point, quaternion, false); 
+        api.moveTo(point2, quaternion2, false); 
 
         //report point2 arrival 
         api.reportPoint2Arrival();
